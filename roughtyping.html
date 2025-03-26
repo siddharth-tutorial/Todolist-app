@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple To-Do List</title>
+    <style>
+        body {
+            font-family: 'poppins', sans-serif;
+            height: 100vh;
+            background:linear-gradient(135deg,#8052ec,#d161ff);
+        }
+        .todo-container {
+            width: 40%;
+            min-width: 450px;
+            position: absolute;
+            margin: auto;
+            left: 0;
+            right: 0;
+            top: 30px;
+            padding: 30px 40px;
+        }
+        h1{
+            color: #ffffff;
+            text-align: center;
+        }
+        #newtask{
+            position: relative;
+            background-color: #ffffff;
+            padding: 30px 20px;
+            border-radius: 5px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        #todoInput{
+            width: 70%;
+            height: 45px;
+            font-family: 'poppins',sans-serif;
+            font-size: 18px;
+            border: 2px solid #d1d3d4;
+            padding: 10px;
+            color: #111111;
+            font-weight: 500;
+            position: relative;
+            border-radius: 10px;
+        }
+
+        #todoInput:focus{
+            outline: none;
+            border-color: purple;
+        }
+        button{
+            position: relative;
+            float: right;
+            width: 20%;
+            height: 55px;
+            border-radius: 5px;
+            font-family: 'poppins',sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            background-color: #8052ec;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            outline: none;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #f4f4f4;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .delete-btn {
+            background-color: #8052ec;
+            color: #ffffff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .delete-btn:hover {
+            background-color:#051650 ;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="todo-container">
+        <h1>My To-Do List</h1>
+        <div id="newtask">
+        <input type="text" id="todoInput" placeholder="Add a new task">
+        <button onclick="addTodo()">Add</button>
+            </div>
+        <ul id="todoList">
+            <!-- List items will appear here -->
+        </ul>
+    </div>
+
+    <script>
+// Get references to the input and list elements
+const todoInput = document.getElementById('todoInput');
+const todoList = document.getElementById('todoList');
+
+// Function to add a new task
+function addTodo() {
+    const taskText = todoInput.value.trim();
+    
+    if (taskText === '') {
+        alert("Please enter a task!");
+        return;
+    }
+
+    // Create a new list item (li)
+    const li = document.createElement('li');
+    li.textContent = taskText;
+
+    // Create a delete button for each task
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Delete';
+    
+    deleteBtn.classList.add('delete-btn');
+
+    // Append the delete button to the list item
+    li.appendChild(deleteBtn);
+
+    // Append the list item to the ul
+    todoList.appendChild(li);
+
+    // Clear the input field
+    todoInput.value = '';
+
+    // Add event listener to the delete button
+    deleteBtn.addEventListener('click', () => {
+        todoList.removeChild(li);
+    });
+}
+
+// Optional: Allow pressing 'Enter' to add a task
+todoInput.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        addTodo();
+    }
+});
+
+    </script>
+</body>
+</html>

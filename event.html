@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Turn On or Off Bulb</title>
+  </head>
+
+  <body>
+    <!-- <span id="msg" style="display: block;">Hello team</span>
+
+    <button id="click" onclick="submit()">click</button>  -->
+
+    <img src="img/off.jpg" id="image" width="250px" alt="bulb" onclick="turnONOff()"/>
+  
+    <script>
+      //   function submit()
+      //              {
+      //                  msg = document.getElementById("msg");
+
+      //                 if(msg.style.display == 'none')
+      //                {
+      //                     msg.style.display = 'block';
+      //              }
+      //               else
+      //                {
+      //                      msg.style.display = 'none';
+      //                  }
+      //             }
+
+      function turnONOff() {
+        pic = document.getElementById("image");
+        if (pic.style.display == "none") {
+          pic.style.display = "block";
+          pic.src = "offbulb.jpg";
+        } else {
+          pic.src = "img/on.png";
+        }
+      }
+    </script>
+  </body>
+</html>
